@@ -707,116 +707,38 @@
     mensajeDiv.style.border = '1px solid #ffecb5';
     mensajeDiv.textContent = 'Enviando tu participación...';
     
-    // Intentar con procesar_encuesta.php primero
-    let urlProceso = 'procesar_encuesta.php';
-    
-    fetch(urlProceso, {
+    // Enviar a Formspree
+    fetch('https://formspree.io/f/xaqqjwzd', {
       method: 'POST',
-      body: formData
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
     })
     .then(response => {
-      if (!response.ok && response.status !== 200) {
-        throw new Error('HTTP ' + response.status);
-      }
-      return response.text();
-    })
-    .then(text => {
-      try {
-        const data = JSON.parse(text);
+      if (response.ok) {
+        mensajeDiv.style.display = 'block';
+        mensajeDiv.style.background = '#d4edda';
+        mensajeDiv.style.color = '#155724';
+        mensajeDiv.style.border = '1px solid #c3e6cb';
+        mensajeDiv.textContent = '✓ ¡Gracias! Tu participación ha sido enviada correctamente. Te contactaremos pronto.';
+        document.getElementById('formulario-participacion').reset();
         
-        if (data.success) {
-          mensajeDiv.style.display = 'block';
-          mensajeDiv.style.background = '#d4edda';
-          mensajeDiv.style.color = '#155724';
-          mensajeDiv.style.border = '1px solid #c3e6cb';
-          mensajeDiv.textContent = data.success;
-          document.getElementById('formulario-participacion').reset();
-          
-          setTimeout(() => {
-            mensajeDiv.style.display = 'none';
-          }, 5000);
-        } else if (data.error) {
-          mensajeDiv.style.display = 'block';
-          mensajeDiv.style.background = '#f8d7da';
-          mensajeDiv.style.color = '#721c24';
-          mensajeDiv.style.border = '1px solid #f5c6cb';
-          mensajeDiv.textContent = data.error;
-        }
-      } catch (parseError) {
-        console.error('Respuesta recibida pero no es JSON:', text);
-        // Si procesar_encuesta.php falló, intentar con procesar_encuesta_simple.php
-        if (urlProceso === 'procesar_encuesta.php') {
-          console.log('Intentando con procesar_encuesta_simple.php...');
-          urlProceso = 'procesar_encuesta_simple.php';
-          
-          fetch(urlProceso, {
-            method: 'POST',
-            body: formData
-          })
-          .then(response => response.text())
-          .then(text2 => {
-            const data = JSON.parse(text2);
-            if (data.success) {
-              mensajeDiv.style.display = 'block';
-              mensajeDiv.style.background = '#d4edda';
-              mensajeDiv.style.color = '#155724';
-              mensajeDiv.style.border = '1px solid #c3e6cb';
-              mensajeDiv.textContent = data.success;
-              document.getElementById('formulario-participacion').reset();
-            } else if (data.error) {
-              mensajeDiv.style.display = 'block';
-              mensajeDiv.style.background = '#f8d7da';
-              mensajeDiv.style.color = '#721c24';
-              mensajeDiv.style.border = '1px solid #f5c6cb';
-              mensajeDiv.textContent = data.error;
-            }
-          })
-          .catch(err => mostrarError(mensajeDiv));
-        } else {
-          mostrarError(mensajeDiv);
-        }
+        setTimeout(() => {
+          mensajeDiv.style.display = 'none';
+        }, 5000);
+      } else {
+        throw new Error('Error en la respuesta');
       }
     })
     .catch(error => {
       console.error('Error:', error);
-      // Intentar con versión simple si principal falla
-      if (urlProceso === 'procesar_encuesta.php') {
-        console.log('Reintentando con procesar_encuesta_simple.php...');
-        fetch('procesar_encuesta_simple.php', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.text())
-        .then(text => {
-          const data = JSON.parse(text);
-          if (data.success) {
-            mensajeDiv.style.display = 'block';
-            mensajeDiv.style.background = '#d4edda';
-            mensajeDiv.style.color = '#155724';
-            mensajeDiv.style.border = '1px solid #c3e6cb';
-            mensajeDiv.textContent = data.success;
-            document.getElementById('formulario-participacion').reset();
-          } else if (data.error) {
-            mensajeDiv.style.display = 'block';
-            mensajeDiv.style.background = '#f8d7da';
-            mensajeDiv.style.color = '#721c24';
-            mensajeDiv.style.border = '1px solid #f5c6cb';
-            mensajeDiv.textContent = data.error;
-          }
-        })
-        .catch(err => mostrarError(mensajeDiv));
-      } else {
-        mostrarError(mensajeDiv);
-      }
+      mensajeDiv.style.display = 'block';
+      mensajeDiv.style.background = '#f8d7da';
+      mensajeDiv.style.color = '#721c24';
+      mensajeDiv.style.border = '1px solid #f5c6cb';
+      mensajeDiv.textContent = 'Error: No se pudo enviar el formulario. Por favor, intenta de nuevo.';
     });
-    
-    function mostrarError(div) {
-      div.style.display = 'block';
-      div.style.background = '#f8d7da';
-      div.style.color = '#721c24';
-      div.style.border = '1px solid #f5c6cb';
-      div.textContent = 'Error: No se puede conectar con el servidor. Verifica que procesar_encuesta.php está en el servidor. Consulta SOLUCION_ERROR.md para más ayuda.';
-    }
   });
   </script>
 
