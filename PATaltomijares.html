@@ -504,6 +504,7 @@
         <p>El Plan de Acción Territorial (PAT) del Alto Mijares es un documento estratégico que tiene como objetivo organizar y orientar el desarrollo de la comarca de manera sostenible. Busca proteger y poner en valor el paisaje, los recursos naturales y el patrimonio cultural, al mismo tiempo que fortalecer el mundo rural y mejora la calidad de vida de sus habitantes. A través del PAT se identifican las necesidades del territorio y se proponen actuaciones concretas para fomentar la actividad económica, social y cultural, promoviendo la participación de la ciudadanía para construir un futuro equilibrado y respetuoso con el entorno.</p>
         <p>El PAT analiza las características de cada municipio y zona del Alto Mijares, evaluando sus fortalezas, oportunidades y desafíos. Con esta información se definen líneas de actuación específicas que buscan preservar los recursos naturales y culturales, impulsar el turismo sostenible, mejorar las infraestructuras y servicios, y apoyar iniciativas económicas que respeten la identidad local.</p>
         <p style="margin-top: 1.5em;"><a href="data/Documento de Síntesis.pdf" target="_blank" style="color: #833f53; font-weight: 600; text-decoration: none; border-bottom: 2px solid #833f53; padding-bottom: 2px;">📄 Documento de Síntesis</a></p>
+        <p style="margin-top: 1.5em;"><a href="data/Presentación PAT.pdf" target="_blank" style="color: #833f53; font-weight: 600; text-decoration: none; border-bottom: 2px solid #833f53; padding-bottom: 2px;">📄 Presentación PAT</a></p>
 
       </div>
       <div class="imagen">
@@ -535,17 +536,17 @@
 
   <!-- SECCIÓN CALENDARIO DE EVENTOS -->
     <section id="calendario">
-    <div class="contenido-flex" style="align-items: flex-start; gap: 2.5rem;">
-      <div style="display: flex; flex-direction: row; align-items: flex-start; width: 100%; gap: 2.5rem;">
-        <div class="texto" style="flex: 1 1 420px; min-width: 320px; max-width: 600px; margin: 0;">
+    <div class="contenido-flex" style="justify-content: center; gap: 2.5rem;">
+      <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 2.5rem;">
+        <div class="texto" style="flex: 1 1 760px; min-width: 340px; max-width: 760px; margin: 0;">
           <h2>Calendario de Eventos</h2>
-          <div id="event-calendar" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 18px #0001; padding: 32px; width: 100%; max-width: 600px; min-width: 340px; font-size: 1.22rem;">
+          <div id="event-calendar" style="position: relative; background: #fff; border-radius: 14px; box-shadow: 0 4px 18px #0001; padding: 32px; width: 100%; max-width: 760px; min-width: 340px; font-size: 1.22rem;">
             <div id="calendar-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
               <button id="prev-month" style="background: none; border: none; font-size: 1.5rem; color: #833f53; cursor: pointer;">&#8592;</button>
               <span id="calendar-month" style="font-weight: bold; color: #3bbfa3; font-size: 1.15rem;"></span>
               <button id="next-month" style="background: none; border: none; font-size: 1.5rem; color: #833f53; cursor: pointer;">&#8594;</button>
             </div>
-            <table id="calendar-table" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 1.18em; min-width: 320px;">
+            <table id="calendar-table" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 1.18em; min-width: 340px;">
               <thead>
                 <tr style="color: #833f53; font-size: 1rem;">
                   <th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th>
@@ -553,13 +554,8 @@
               </thead>
               <tbody id="calendar-body"></tbody>
             </table>
-            <div id="event-list" style="display:none;"></div>
-          </div>
-        </div>
-  <div class="imagen" style="flex: 1 1 320px; min-width: 260px; max-width: 420px; margin: 72px 0 0 32px;">
-          <div id="event-listado" style="background: #fff; border-radius: 14px; box-shadow: 0 4px 18px #0001; padding: 28px 24px; font-size: 1.13rem; color: #833f53; min-height: 0; display: flex; flex-direction: column; justify-content: flex-start;">
-            <h3 style="margin-top:0; color:#3bbfa3; font-size:1.18rem;">Eventos planificados</h3>
-            <ul id="eventos-todos" style="list-style:none; padding:0; margin:0;"></ul>
+            <p style="margin: 16px 0 0; color: #555; font-size: 0.95rem; text-align: center;">Pasa el cursor sobre un día marcado o haz click para ver el evento.</p>
+            <div id="event-tooltip" style="display:none; position:absolute; z-index:1000; background:#fff; border:1px solid rgba(131,63,83,0.24); box-shadow:0 14px 28px rgba(0,0,0,0.18); padding:14px 16px; border-radius:12px; max-width:280px; font-size:0.95rem; color:#333; pointer-events:none;"></div>
           </div>
         </div>
       </div>
@@ -692,6 +688,8 @@
 
     <button type="submit" style="background: #3bbfa3; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s;">Enviar Participación</button>
   </form>
+
+  <p style="margin-top: 2em; text-align: center;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSetB1q1RCvU7rqmiF75Wzwv_T_8iU0qYP-OpWg7P6zagPMNqg/viewform?usp=header" target="_blank" style="background: #833f53; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s;">Encuesta de Valoración</a></p>
 
   <script>
   document.getElementById('formulario-participacion').addEventListener('submit', function(e) {
@@ -879,18 +877,19 @@
   <script>
     // --- Calendario de Eventos ---
     const events = [
-      { date: '2025-09-25', title: 'Taller participativo en Cirat' },
-      { date: '2025-10-03', title: 'Reunión informativa en Argelita' },
-      { date: '2025-10-10', title: 'Encuentro vecinal en Ludiente' },
-      { date: '2025-10-18', title: 'Cierre de encuesta online' }
+      { date: '2026-02-18', title: 'Presentación del PAT ante el Servicio de Planificación Territorial. Ciutat Administrativa' },
+      { date: '2026-02-23', title: 'Publicación DOGV por el que se da comienzo la Participación Pública de la Versión Inicial del PAT' },
+      { date: '2026-03-13', title: 'Presentación a los departamentos sectoriales de la Generalitat, Ciutat Administrativa' },
+      { date: '2026-03-25', title: 'Presentación en Diputación de Castellón' }
     ];
     const calendarBody = document.getElementById('calendar-body');
     const calendarMonth = document.getElementById('calendar-month');
-    const eventList = document.getElementById('event-list');
+    const eventCalendar = document.getElementById('event-calendar');
+    const eventTooltip = document.getElementById('event-tooltip');
     let current = new Date();
     current.setDate(1);
 
-  function renderCalendar() {
+    function renderCalendar() {
       const year = current.getFullYear();
       const month = current.getMonth();
       const firstDay = new Date(year, month, 1);
@@ -916,48 +915,49 @@
       }
       calendarBody.innerHTML = html;
       calendarMonth.textContent = current.toLocaleString('es-ES', { month: 'long', year: 'numeric' });
-  addDayListeners();
-  showEventsForMonth();
-  renderEventListAll();
-    // Mostrar todos los eventos planificados en el listado lateral
-    function renderEventListAll() {
-      const eventosTodos = document.getElementById('eventos-todos');
-      if (!eventosTodos) return;
-      if (events.length === 0) {
-        eventosTodos.innerHTML = '<li style="color:#aaa;">No hay eventos planificados.</li>';
-        return;
-      }
-      // Ordenar por fecha ascendente
-      const eventosOrdenados = events.slice().sort((a, b) => a.date.localeCompare(b.date));
-      eventosTodos.innerHTML = eventosOrdenados.map(e => `<li style="margin-bottom:1em;"><b>${e.title}</b><br><span style='color:#3bbfa3;font-size:0.98em;'>${e.date}</span></li>`).join('');
-    }
+      addDayListeners();
     }
     function dayCell(day, month, year) {
       const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-      const hasEvent = events.some(e => e.date === dateStr);
-      return `<td data-date="${dateStr}" style="padding:6px; border-radius:8px; background:${hasEvent?'#e6c1a3':'none'}; color:${hasEvent?'#833f53':'#333'}; font-weight:${hasEvent?'bold':'normal'}; cursor:pointer;">${day}</td>`;
+      const dayEvents = events.filter(e => e.date === dateStr);
+      const hasEvent = dayEvents.length > 0;
+      const titleText = hasEvent ? dayEvents.map(e => `${e.title} (${e.date})`).join(' | ') : '';
+      return `<td data-date="${dateStr}" title="${titleText}" style="padding:12px; border-radius:10px; background:${hasEvent?'#e6c1a3':'none'}; color:${hasEvent?'#833f53':'#333'}; font-weight:${hasEvent?'bold':'normal'}; cursor:pointer; transition: transform 0.18s;">${day}</td>`;
     }
     function addDayListeners() {
       document.querySelectorAll('#calendar-table td[data-date]').forEach(td => {
-        td.onclick = function() {
-          const date = this.getAttribute('data-date');
-          const dayEvents = events.filter(e => e.date === date);
-          if (dayEvents.length) {
-            eventList.innerHTML = dayEvents.map(e => `<div><b>${e.title}</b> <span style='color:#3bbfa3;font-size:0.98em;'>(${date})</span></div>`).join('');
-          } else {
-            eventList.innerHTML = '';
-          }
-        };
+        const date = td.getAttribute('data-date');
+        const dayEvents = events.filter(e => e.date === date);
+        td.onclick = () => showTooltip(td, dayEvents);
+        td.onmouseenter = () => showTooltip(td, dayEvents);
+        td.onmouseleave = hideTooltip;
       });
     }
-    function showEventsForMonth() {
-      const monthStr = `${current.getFullYear()}-${String(current.getMonth()+1).padStart(2,'0')}`;
-      const monthEvents = events.filter(e => e.date.startsWith(monthStr));
-      if (monthEvents.length) {
-        eventList.innerHTML = monthEvents.map(e => `<div><b>${e.title}</b> <span style='color:#3bbfa3;font-size:0.98em;'>(${e.date})</span></div>`).join('');
-      } else {
-        eventList.innerHTML = '<span style="color:#aaa;">No hay eventos este mes.</span>';
+    function showTooltip(td, dayEvents) {
+      if (!eventTooltip || !dayEvents.length) {
+        hideTooltip();
+        return;
       }
+      eventTooltip.innerHTML = dayEvents.map(e => `<div style="margin-bottom:10px;"><b>${e.title}</b><div style="color:#3bbfa3;font-size:0.95rem;margin-top:4px;">${e.date}</div></div>`).join('');
+      eventTooltip.style.display = 'block';
+      eventTooltip.style.visibility = 'hidden';
+      eventTooltip.style.left = '0px';
+      eventTooltip.style.top = '0px';
+      const calendarRect = eventCalendar.getBoundingClientRect();
+      const tdRect = td.getBoundingClientRect();
+      const tooltipRect = eventTooltip.getBoundingClientRect();
+      let left = tdRect.left - calendarRect.left + (tdRect.width - tooltipRect.width) / 2;
+      let top = tdRect.top - calendarRect.top - tooltipRect.height - 12;
+      if (top < 0) top = tdRect.bottom - calendarRect.top + 12;
+      const minLeft = 12;
+      const maxLeft = calendarRect.width - tooltipRect.width - 12;
+      left = Math.min(Math.max(left, minLeft), maxLeft);
+      eventTooltip.style.left = `${left}px`;
+      eventTooltip.style.top = `${top}px`;
+      eventTooltip.style.visibility = 'visible';
+    }
+    function hideTooltip() {
+      if (eventTooltip) eventTooltip.style.display = 'none';
     }
     document.getElementById('prev-month').onclick = function() {
       current.setMonth(current.getMonth() - 1);
